@@ -1,29 +1,19 @@
 // your code here
-const form = document.getElementById("form");
-const nameInput = document.getElementById("name");
-const yearInput = document.getElementById("year");
-const urlText = document.getElementById("url");
+  document.getElementById("button").addEventListener("click", function(e){
+        e.preventDefault();
+	  
+        const name = document.getElementById("name").value;
+        const year = document.getElementById("year").value;
 
-form.addEventListener("submit",function(e){
-	e.preventDefault();
+        let url = "https://localhost:8080/";
 
-	let name = nameInput.value.trim();
-	let year = yearInput.value.trim();
+        if (name && year) {
+            url += "?name=" + name + "&year=" + year;
+        } else if (name) {
+            url += "?name=" + name;
+        } else if (year) {
+            url += "?year=" + year;
+        }
 
-	let base = "https://localhost:8080/";
-    let query = [];
-
-	if(name){
-		query.push("name="+encodeURIComponent(name))
-	}
-	if(year){
-	    query.push("year=" + encodeURIComponent(year));
-    }
-
-    if(query.length > 0){
-        urlText.textContent = base + "?" + query.join("&");
-    }else{
-        urlText.textContent = base;
-    }
-	
-})
+        document.getElementById("url").innerText = url;
+    });
