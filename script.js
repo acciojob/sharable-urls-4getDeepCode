@@ -1,19 +1,17 @@
 // your code here
-  document.getElementById("button").addEventListener("click", function(e){
-        e.preventDefault();
-	  
+   document.getElementById("button").addEventListener("click", function(){
+
         const name = document.getElementById("name").value;
         const year = document.getElementById("year").value;
-
         let url = "https://localhost:8080/";
 
-        if (name && year) {
+        if(name && year){
             url += "?name=" + name + "&year=" + year;
-        } else if (name) {
+        }else if (name){
             url += "?name=" + name;
-        } else if (year) {
-            url += "?year=" + year;
+        } else if (year){
+                url += "?year=" + year;
         }
 
         document.getElementById("url").innerText = url;
-    });
+        });
